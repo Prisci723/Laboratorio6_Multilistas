@@ -3,6 +3,10 @@
 using std::cout;
 
          void ListaEstudiantes::Inscribir_estudiante(NodoAsignatura * a, NodoEstudiante * e){
+            if(a == nullptr){
+                Lista::error();
+            }
+            else{
             if(a->getPrimerEstudiante()==NULL){
             e->siguiente = a->getPrimerEstudiante();
             a->pEstudiante = e;
@@ -11,6 +15,7 @@ using std::cout;
               e->anterior = a->getPrimerEstudiante();
             e->siguiente = a->getPrimerEstudiante();
             a->pEstudiante = e;     
+            }
             }
             return;
      }
@@ -73,13 +78,19 @@ using std::cout;
     }
 
     int ListaEstudiantes::Cantidad_estudiantes(NodoAsignatura * a){
-        int Cantidad = 0;
+         int Cantidad = 0;
+        if(a == nullptr){
+            Cantidad = 0;
+        }
+        else{
                 NodoEstudiante * traveser;
                 traveser = a->getPrimerEstudiante();
                     while(traveser!=NULL){
                     Cantidad++;
                     traveser = traveser->getSiguienteNodo();
                     }
+        }
+
         return Cantidad;
     }
 
@@ -98,7 +109,7 @@ using std::cout;
     void ListaEstudiantes::BuscarEstudiante(string cod, NodoAsignatura* a){
         NodoEstudiante * est = resultado_estudiante(cod, a);
 
-        if(est == nullptr){
+        if(est == nullptr || a == nullptr){
             Lista::error();
         }
         else{
@@ -110,7 +121,7 @@ using std::cout;
 
               NodoEstudiante * est = resultado_estudiante(cod, a);
               NodoEstudiante * izq, *der;
-        if(est == nullptr){
+        if(est == nullptr || a == nullptr){
             Lista::error();
         }
         else{
@@ -129,7 +140,7 @@ using std::cout;
     void ListaEstudiantes::Mostrar_anterior(string cod, NodoAsignatura*a){
 
               NodoEstudiante * est = resultado_estudiante(cod, a);
-        if(est == nullptr){
+        if(est == nullptr || a == nullptr){
             Lista::error();
         }
         else{
@@ -146,6 +157,10 @@ using std::cout;
     int ListaEstudiantes::Cantidad_genero(NodoAsignatura * a, char g){
         NodoEstudiante * est = a->getPrimerEstudiante();
         int cantidad = 0;
+        if(a == nullptr || a== NULL){
+            Lista::error();
+        }
+        else{
         switch(g){
             case 'f': case 'F':
                 do{
@@ -166,7 +181,7 @@ using std::cout;
             default: 
             break;
         }
-
+        }
         return cantidad;
     }
 

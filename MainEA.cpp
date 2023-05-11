@@ -83,7 +83,7 @@ void mostrar_estudiante_anterior(string cod_asig, string nomb){
 }
 
 void cantidad_est(string cod){
-   cout<<"Cantidad de estudiantes de la materia"<<cod<<": "<<pEst->Cantidad_estudiantes(buscar_asignatura(cod))<<"\n";
+   cout<<"Cantidad de estudiantes de la materia "<<cod<<": "<<pEst->Cantidad_estudiantes(buscar_asignatura(cod))<<"\n";
 }
 
 void cantidad_asign(){
@@ -126,7 +126,6 @@ void Insertar_estudiante(string n, string c, string d, char g, int i){
 
 
 int main(){
-    NodoAsignatura *ptr1 = new NodoAsignatura;
  /* pLA->iniciar();
    NodoAsignatura estudiante1 = NodoAsignatura();
 
@@ -148,36 +147,27 @@ funciona ok:
      NodoEstudiante Estudiante2 = NodoEstudiante("100","mili","Suipacha288", Femenino);
         ptr2 = &Estudiante2;
     pEst->insertar_delante(ptr2);
-   ;*/  
-    Insertar_asignatura("MAT101","Calculo 1", 1);
-    Insertar_asignatura("MAT100","Alegebra 1", 1);
-
-    // NodoEstudiante Estudiante1 = NodoEstudiante("","Suipacha288", Femenino);    ptr2 = &Estudiante1;
-     cout<<"---------------------------------"<<"\n";
     Insertar_estudiante("Felipe", "121", "Suipacha288", 'm', "MAT101");
     Insertar_estudiante("Priscila", "224", "Suipacha288", 'f', "MAT101");
     Insertar_estudiante("Mili", "784", "Suipacha288", 'f', "MAT100");
-    Insertar_estudiante("Joley", "244", "La recoleta", 'm', "MAT100");
-   // pLA->mostrarTodo();
-
-     cout<<"---------------------------------"<<"\n";
-     cout<<"---------------------------------"<<"\n";
-   // mostrar_todo();
-    buscar_estudiante("MAT100", "121");
+    Insertar_asignatura("MAT101","Calculo 1", 1);
+    Insertar_asignatura("MAT100","Alegebra 1", 1);
+       buscar_estudiante("MAT100", "121");
     buscar_estudiante("MAT101", "121");
     cantidad_asign();
     cantidad_est("MAT108");
     cantidad_est("MAT101");
 
 
-    // pEst->Mostrar_todos_estudiantes();
-    //Insertar_estudiante(,   'f', 1);
-
-	/*
        / NodoEstudiante *ptr2 = new NodoEstudiante;
     ptr2 = &Estudiante1;
     pEst->MostrarUno(ptr2);
-    
+   ;*/  
+    // NodoEstudiante Estudiante1 = NodoEstudiante("","Suipacha288", Femenino);    ptr2 = &Estudiante1;
+   // pLA->mostrarTodo();
+   // mostrar_todo();
+    // pEst->Mostrar_todos_estudiantes();
+    //Insertar_estudiante(,   'f', 1);
     int opc, i;
     string c, d, n, cod;
     char g;
@@ -186,16 +176,23 @@ funciona ok:
 		{
 
 
-			cout << "           LISTA DE ASIGNATURAS" << endl;
+			cout << "              LISTA DE ASIGNATURAS" << endl;
 			cout << "      Seleccione la opcion a realizar\n\n";
+            cout<<"********************Menu asignaturas: ****************************";
 			cout << "      1.- Insertar una asignatura por delante\n";
 			cout << "      2.- Insertar una asignatura por atras\n";
 			cout << "      3.- Mostrar toda la lista de asignaturas\n";
-			cout << "      4.- Insertar un estudiante\n";
-			cout << "      5.- Mostrar todos los estudiantes de una asignatura\n";
-			cout << "     6.- Mostrar toda la multilista\n";
-			cout << "     8.- Salir";
-			cout << "       \n\n\nOpcion(1-10): ";
+			cout << "      4.- Mostrar cantidad de asignaturas\n";
+            cout<<"********************Menu estudiantes: ****************************";
+			cout << "      5.- Insertar un estudiante\n";
+			cout << "      6.- Mostrar todos los estudiantes de una asignatura\n";
+  			cout << "      7.- Buscar un estudiante dentro de una asignatura\n";      
+ 			cout << "      8.- Mostrar el total de estudiantes por genero\n";
+			cout << "      9.- Eliminar un estudiante\n";
+  			cout << "      10.- Mostrar un estudiante anterior\n";                     
+			cout << "      11.- Mostrar toda la multilista\n";
+			cout << "      12.- Salir";
+			cout << "       \n\n\nOpcion(1-12): ";
 
 			cin >> opc;
 
@@ -216,10 +213,14 @@ funciona ok:
 				Insertar_asignatura(c, d, 2);
 				break;
 			case 3:
-				pLA->mostrarTodo();
+				mostrar_todas_lista_asignaturas();
                 getchar();
 				break;
 			case 4:
+                    cantidad_asign();
+                    getchar();
+				break;
+			case 5:
                 c = d =n = "";
                 g=' ';
                 cod = "";
@@ -229,21 +230,44 @@ funciona ok:
                 cout<<"Ingrese el genero del estudiante m masculino, f femenino: "; cin>>g;
                 cout<<"Ingrese el codigo de la asginatura a la que pertenece el estudiante"; cin>>cod;
                 Insertar_estudiante(n, c, d, g, cod);
-				break;
-			case 5:
-                cout<<"Ingrese el codigo de la asginatura de la que desea ver la lista de estudiantes"; cin>>cod;
-                mostrar_estudiante_asignatura(cod);
-				break;
+
 			case 6:
+                cod = " ";
+                cout<<"Ingrese el codigo de la asginatura de la que desea ver la lista de estudiantes: "; cin>>cod;
+                mostrar_estudiantes_asignatura(cod);
+				break;
+			case 7:
+
 				break;
 			case 8:
+                 c = cod = "";
+                cout<<"Ingrese el codigo de la asginatura de la que desea buscar el estudiante: "; cin>>cod;
+                cout<<"Ingrese el codigo del estudiante al que desea buscar: "; cin>>c;
+                buscar_estudiante(cod, c);
+				break;
+			case 9:
+                c = cod = "";
+                cout<<"Ingrese el codigo de la asginatura de la que desea eliminar a un estudiante: "; cin>>cod;
+                cout<<"Ingrese el codigo del estudiante al que desea eliminar: "; cin>>c;
+                eliminar_estudiante(cod, c);
+				break;
+			case 10:
+                c = cod = "";
+                cout<<"Ingrese el codigo de la asginatura de la que desea mostrar un estudiante anterior: "; cin>>cod;
+                cout<<"Ingrese el codigo del estudiante al que desea buscar el anterior: "; cin>>c;
+                mostrar_estudiante_anterior(cod, c);
+				break;
+			case 11:
+                mostrar_todo();
+				break;
+			case 12:
 				exit(0);
 				break;
 
 			}
-		} 	while ((opc != 8));
+		} 	while ((opc != 12));
 
-*/
+
     return 0;
 }
 /*

@@ -74,10 +74,7 @@ NodoAsignatura* ListaAsignaturas::Asignatura_resultado(string cod){
             traveser = traveser->getSiguienteNodo();           
         }
         }
-        else{
         return nullptr;
-    }
-
     }
 
     void ListaAsignaturas::mostrarUno(NodoAsignatura * traveser){
