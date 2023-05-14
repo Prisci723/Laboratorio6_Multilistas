@@ -12,7 +12,7 @@ using std::cout;
             a->pEstudiante = e;
             }
             else{
-              e->anterior = a->getPrimerEstudiante();
+            a->pEstudiante->anterior = e;
             e->siguiente = a->getPrimerEstudiante();
             a->pEstudiante = e;     
             }

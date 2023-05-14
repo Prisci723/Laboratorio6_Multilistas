@@ -178,12 +178,12 @@ funciona ok:
 
 			cout << "              LISTA DE ASIGNATURAS" << endl;
 			cout << "      Seleccione la opcion a realizar\n\n";
-            cout<<"********************Menu asignaturas: ****************************";
+            cout<<"********************Menu asignaturas: ****************************\n";
 			cout << "      1.- Insertar una asignatura por delante\n";
 			cout << "      2.- Insertar una asignatura por atras\n";
 			cout << "      3.- Mostrar toda la lista de asignaturas\n";
 			cout << "      4.- Mostrar cantidad de asignaturas\n";
-            cout<<"********************Menu estudiantes: ****************************";
+            cout<<"********************Menu estudiantes: ****************************\n";
 			cout << "      5.- Insertar un estudiante\n";
 			cout << "      6.- Mostrar todos los estudiantes de una asignatura\n";
   			cout << "      7.- Buscar un estudiante dentro de una asignatura\n";      
@@ -202,15 +202,15 @@ funciona ok:
                 c = d ="";
                 cout<<"Ingrese el codigo de la asignatura: "<<endl; cin>>c;
                 cout<<"Ingrese la descripcion de la asignatura: "; cin>>d;
-                getchar();
 				Insertar_asignatura(c, d, 1);
+                    getchar();
 				break;
 			case 2:
                 c = d ="";
                 cout<<"Ingrese el codigo de la asignatura: "<<endl; cin>>c;
                 cout<<"Ingrese la descripcion de la asignatura: "; cin>>d;
-                getchar();
 				Insertar_asignatura(c, d, 2);
+                    getchar();
 				break;
 			case 3:
 				mostrar_todas_lista_asignaturas();
@@ -230,20 +230,27 @@ funciona ok:
                 cout<<"Ingrese el genero del estudiante m masculino, f femenino: "; cin>>g;
                 cout<<"Ingrese el codigo de la asginatura a la que pertenece el estudiante"; cin>>cod;
                 Insertar_estudiante(n, c, d, g, cod);
-
+                    getchar();
+                    break;
 			case 6:
                 cod = " ";
                 cout<<"Ingrese el codigo de la asginatura de la que desea ver la lista de estudiantes: "; cin>>cod;
                 mostrar_estudiantes_asignatura(cod);
+                    getchar();
 				break;
 			case 7:
-
-				break;
-			case 8:
                  c = cod = "";
                 cout<<"Ingrese el codigo de la asginatura de la que desea buscar el estudiante: "; cin>>cod;
                 cout<<"Ingrese el codigo del estudiante al que desea buscar: "; cin>>c;
                 buscar_estudiante(cod, c);
+				break;
+
+			case 8:
+                cod = " ";
+                g=' ';
+                cout<<"Ingrese el codigo de la asginatura de la que desea ver la cantidad de estudiantes por genero: "; cin>>cod;
+                cout<<"Ingrese el genero de los estudiantes de los que desea ver la cantidad: "; cin>>g;
+                genero_estudiante(cod, g);           
 				break;
 			case 9:
                 c = cod = "";
